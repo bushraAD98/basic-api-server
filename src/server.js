@@ -1,9 +1,18 @@
-
+'use strict';
 
 const express = require('express');
-// const res = require('express/lib/response');
 const app = express();
 const cors = require('cors');
+const clothesRoutes = require('./routes/ clothes.js');
+const foodRoutes = require('./routes/ food.js');
+
+
+
+app.use(express.json());
+app.use(cors());
+app.use(clothesRoutes);
+app.use(foodRoutes);
+
 
 
 function start(PORT){
