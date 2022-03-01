@@ -20,7 +20,7 @@ let sequelizeOptions =  {
 
 
   module.exports = {
-    db: sequelize, 
-    food: food(sequelize,DataTypes),
+    db: sequelize, //to make a real db connection in the main index.js
+    food: food(sequelize,DataTypes), // to make the table & to use it in the routes
     clothes: clothes(sequelize,DataTypes)
 }
