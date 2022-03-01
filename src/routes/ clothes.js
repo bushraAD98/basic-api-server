@@ -1,9 +1,9 @@
 'use strict';
-const express = require ('express');
+const express = require ('express');//to make a router
 const {clothes} = require('../models/ index');
-const routers = express.Router();
+const routers = express.Router();//to put all the clothes router inside it then export it in the server.js
 
-
+//we call the points by the routers to have them all in one place to use them in server.js
 routers.get('/clothes',getAllclothes);
 routers.post('/clothes',addNewClothes)
 routers.get('/clothes/:id',getSingleClothes)
@@ -14,17 +14,17 @@ routers.put('/clothes/:id',updateClothes)
 
 
 async function getAllclothes(req,res){
-    let clothesCollection = await clothes.findAll();
+    let clothesCollection = await clothes.findAll(); //findAll a sequelize method
     res.status(200).json(clothesCollection);
 }
 
 async function addNewClothes(req,res) {
   let sentClothes = req.body;
-  let newClothes = await clothes.create(sentClothes);
+  let newClothes = await clothes.create(sentClothes);//create a sequelize method
   res.status(201).json(newClothes);
 }
 async function getSingleClothes(req,res){
-    let customerId = parseInt(req.params.id);
+    let customerId = parseInt(req.params.id);//here we use parseInt because the data is returned as a string
     let theClothes = await clothes.findOne({where:{id:customerId}});
     res.status(200).json(theClothes);
 }
